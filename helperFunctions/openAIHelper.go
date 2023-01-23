@@ -1,4 +1,4 @@
-package helperFunctions/helper
+package helper
 
 import (
 	"bytes"

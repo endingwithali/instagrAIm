@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/endingwithali/instagrAIm/helper"
+	"github.com/endingwithali/instagrAIm/helperFunctions/helper"
 )
 
 func main() {
