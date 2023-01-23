@@ -1,4 +1,4 @@
-package helpers
+package helperFunctions/helper
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func main() {
+func OpenAIGenerate() {
 	client := &http.Client{}
 	jsonBody := []byte(`{"prompt": "a white siamese cat", "n": 1,"size": "1024x1024"}`)
 	bodyReader := bytes.NewReader(jsonBody)
@@ -24,7 +24,9 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	log.Printf("client: got response!\n")
 	log.Print(resp)
+	log.Printf("client: status code: %d\n", resp.StatusCode)
 
 }
 
