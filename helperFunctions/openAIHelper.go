@@ -21,21 +21,19 @@ func OpenAIGenerate() {
 
 	//Setting Up HTTP Headers
 	req.Header.Add("Content-Type", `application/json`)
-	log.Printf(os.Getenv("OPEN_AI_CODE"))
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("OPEN_AI_CODE")))
-
-	//Printing out HTTP Request
-	reqDump, err := httputil.DumpRequestOut(req, true)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("Client: request build! %s\n", string(reqDump))
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Panic(err)
 	}
 	log.Printf("client: got response!\n")
-	log.Print(resp)
+	dump, err := httputil.DumpResponse(resp, true)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("%q", dump)
+
 	log.Printf("client: status code: %d\n", resp.StatusCode)
 
 }
