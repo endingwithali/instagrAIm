@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"os"
 )
 
@@ -17,9 +18,18 @@ func OpenAIGenerate() {
 	if err != nil {
 		log.Panic(err)
 	}
+
+	//Setting Up HTTP Headers
 	req.Header.Add("Content-Type", `application/json`)
+	log.Printf(os.Getenv("OPEN_AI_CODE"))
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("OPEN_AI_CODE")))
-	log.Print(req)
+
+	//Printing out HTTP Request
+	reqDump, err := httputil.DumpRequestOut(req, true)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Client: request build! %s\n", string(reqDump))
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Panic(err)
