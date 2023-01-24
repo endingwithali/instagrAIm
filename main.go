@@ -14,5 +14,6 @@ func main() {
 		log.Fatalf("err loading: %v", err)
 	}
 	fmt.Printf("in main \n")
-	helper.OpenAIGenerate()
+	// helper.OpenAIGenerate()
+	helper.InstagramActivate()
 }

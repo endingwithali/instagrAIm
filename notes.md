@@ -57,3 +57,31 @@ https://developers.facebook.com/docs/instagram-api/getting-started/
 instagram account 
 
 https://stackoverflow.com/questions/15049903/how-to-use-custom-packages
+
+
+unminify.com 
+
+
+response for 
+	resp, err := http.Get(fmt.Sprintf("https://graph.facebook.com/v15.0/me/accounts?access_token=%s", accessToken))
+
+{
+    "data": [
+        {
+            "access_token": "",
+            "category": "Digital creator",
+            "category_list": [
+                { "id": "", "name": "Digital creator" }
+            ],
+            "name": "Egirlworld",
+            "id": ""
+        }
+    ],
+    "paging": { "cursors": { "before": "", "after": "" } }
+}
+
+body[data][0][id]
+
+
+accessing json with golang https://dev.to/billylkc/parse-json-api-response-in-go-10ng
+https://go.dev/blog/json

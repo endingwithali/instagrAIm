@@ -3,6 +3,7 @@ package helper
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -31,10 +32,13 @@ func OpenAIGenerate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	log.Print(body)
 	log.Printf("%q", dump)
 
 	log.Printf("client: status code: %d\n", resp.StatusCode)
+	resp.Body.Close()
 
 }
 
